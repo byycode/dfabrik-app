@@ -1,1 +1,15 @@
 
+{
+  "appId": "com.dfabrik.app",
+  "appName": "D.Fabrik",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SQLite": {
+      "iosDatabaseLocation": "Library/Caches",
+      "androidDatabaseLocation": "databases"
+    }
+  }
+}
