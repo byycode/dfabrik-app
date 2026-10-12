@@ -1,0 +1,44 @@
+<div class="vh">
+    <button class="bb" onclick="goTo('dashboard')"><i class="fas fa-arrow-left"></i></button>
+    <h2>Garantías</h2>
+</div>
+
+<!-- Tabs -->
+<div class="sn" id="garSN">
+    <button class="st active" data-s="activas">Activas</button>
+    <button class="st" data-s="vencidas">Vencidas</button>
+    <button class="st" data-s="finalizadas">Finalizadas</button>
+    <button class="st" data-s="todas">Todas</button>
+</div>
+
+<!-- Buscador -->
+<div class="sw">
+    <i class="fas fa-search"></i>
+    <input class="si" type="text" id="garSrch" placeholder="Buscar por cliente, código, equipo..." oninput="window.rG()">
+</div>
+
+<!-- Filtro por área -->
+<div class="pl" id="garAreaPills"></div>
+
+<!-- Stats -->
+<div class="ms">
+    <div class="mb">
+        <div class="ml">Total</div>
+        <div class="mv blue" id="garTotal">0</div>
+    </div>
+    <div class="mb">
+        <div class="ml">Activas</div>
+        <div class="mv green" id="garActivas">0</div>
+    </div>
+    <div class="mb">
+        <div class="ml">Vencidas</div>
+        <div class="mv red" id="garVencidas">0</div>
+    </div>
+    <div class="mb">
+        <div class="ml">Finalizadas</div>
+        <div class="mv cyan" id="garFinalizadas">0</div>
+    </div>
+</div>
+
+<!-- Lista -->
+<div class="plist" id="garList"></div>

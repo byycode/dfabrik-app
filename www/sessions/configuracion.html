@@ -1,0 +1,284 @@
+<div class="vh">
+    <button class="bb" onclick="goTo('dashboard')"><i class="fas fa-arrow-left"></i></button>
+    <h2>Ajustes Generales</h2>
+</div>
+
+<div style="background:var(--surface); border-radius:var(--radius); padding:16px; margin-bottom:14px; border:1px solid var(--border);">
+    <p style="font-size:11px; color:var(--text-dim); margin-bottom:6px;">Configuración de la aplicación</p>
+    <p style="font-size:13px; color:var(--text); font-weight:500;">Solo visible para el administrador</p>
+</div>
+
+<form id="configForm" onsubmit="window.guardarConfiguracion(event)">
+
+    <!-- ============================================================ -->
+    <!-- DATOS GENERALES -->
+    <!-- ============================================================ -->
+    <p style="font-size:10px; color:var(--text-dim); text-transform:uppercase; letter-spacing:.5px; margin-bottom:12px; font-weight:700;">
+        <i class="fas fa-building" style="color:var(--blue);"></i> Datos del Negocio
+    </p>
+
+    <div class="fg_">
+        <label>Nombre del negocio</label>
+        <input type="text" id="cfgNombre" placeholder="Mi taller" required>
+    </div>
+
+    <div class="fg_">
+        <label>URL del logo</label>
+        <input type="text" id="cfgLogo" placeholder="https://ejemplo.com/logo.png">
+    </div>
+
+    <div class="fg_">
+        <label>Teléfono</label>
+        <input type="text" id="cfgTelefono" placeholder="+123 456 7890">
+    </div>
+
+    <div class="fg_">
+        <label>Email</label>
+        <input type="email" id="cfgEmail" placeholder="contacto@taller.com">
+    </div>
+
+    <div class="fg_">
+        <label>Dirección</label>
+        <input type="text" id="cfgDireccion" placeholder="Calle, número, ciudad">
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- APARIENCIA -->
+    <!-- ============================================================ -->
+    <div style="margin-top:20px; padding-top:16px; border-top:1px solid var(--border);">
+        <p style="font-size:10px; color:var(--text-dim); text-transform:uppercase; letter-spacing:.5px; margin-bottom:12px; font-weight:700;">
+            <i class="fas fa-palette" style="color:var(--purple);"></i> Apariencia
+        </p>
+
+        <div class="fg_">
+            <label>Tema</label>
+            <select id="cfgTema">
+                <option value="dark">Oscuro (por defecto)</option>
+                <option value="light">Claro</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MONEDAS Y TASA DE CAMBIO -->
+    <!-- ============================================================ -->
+    <div style="margin-top:20px; padding-top:16px; border-top:1px solid var(--border);">
+        <p style="font-size:10px; color:var(--text-dim); text-transform:uppercase; letter-spacing:.5px; margin-bottom:12px; font-weight:700;">
+            <i class="fas fa-coins" style="color:var(--amber);"></i> Monedas y Tasa de Cambio
+        </p>
+
+        <div class="fg_">
+            <label>Moneda principal (para mostrar precios)</label>
+            <select id="cfgMonedaPrincipal">
+                <option value="CUP">CUP - Peso Cubano</option>
+                <option value="USD">USD - Dólar Estadounidense</option>
+            </select>
+        </div>
+
+        <div class="fr">
+            <div class="fg_">
+                <label>Símbolo CUP</label>
+                <input type="text" id="cfgSimboloCUP" placeholder="₱" maxlength="5">
+            </div>
+            <div class="fg_">
+                <label>Símbolo USD</label>
+                <input type="text" id="cfgSimboloUSD" placeholder="$" maxlength="5">
+            </div>
+        </div>
+
+        <div class="fg_">
+            <label>Tasa de cambio (1 USD = ? CUP)</label>
+            <input type="number" id="cfgTasaCambio" min="0" step="0.01" placeholder="Ej: 320.00">
+        </div>
+
+        <div class="fg_">
+            <label>Redondeo de precios</label>
+            <select id="cfgRedondeo">
+                <option value="0">Sin redondeo</option>
+                <option value="2">2 decimales (centavos)</option>
+                <option value="1">1 decimal</option>
+                <option value="whole">Redondear a entero</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 🔥 COMISIONES DE VENTA -->
+    <!-- ============================================================ -->
+    <div style="margin-top:20px; padding-top:16px; border-top:1px solid var(--border);">
+        <p style="font-size:10px; color:var(--text-dim); text-transform:uppercase; letter-spacing:.5px; margin-bottom:6px; font-weight:700;">
+            <i class="fas fa-percent" style="color:var(--green);"></i> Comisiones de Venta
+        </p>
+        <p style="font-size:10px; color:var(--text-dim); margin-bottom:12px;">
+            Define cuánto gana el técnico por cada producto vendido.
+        </p>
+
+        <!-- Equipo -->
+        <div style="background:var(--bg); border-radius:8px; padding:10px; margin-bottom:8px; border:1px solid var(--border);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                <span style="font-size:12px; font-weight:600; color:var(--text);">Equipo</span>
+            </div>
+            <div class="fr">
+                <div class="fg_" style="margin-bottom:0;">
+                    <label style="font-size:10px;">Tipo</label>
+                    <select id="comEquipoTipo">
+                        <option value="porcentaje">% del precio</option>
+                        <option value="fijo">$ fijo por unidad</option>
+                    </select>
+                </div>
+                <div class="fg_" style="margin-bottom:0;">
+                    <label style="font-size:10px;">Valor</label>
+                    <input type="number" id="comEquipoValor" min="0" step="0.01" value="5">
+                </div>
+            </div>
+        </div>
+
+        <!-- Partes -->
+        <div style="background:var(--bg); border-radius:8px; padding:10px; margin-bottom:8px; border:1px solid var(--border);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                <span style="font-size:12px; font-weight:600; color:var(--text);">Partes</span>
+            </div>
+            <div class="fr">
+                <div class="fg_" style="margin-bottom:0;">
+                    <label style="font-size:10px;">Tipo</label>
+                    <select id="comPartesTipo">
+                        <option value="porcentaje">% del precio</option>
+                        <option value="fijo">$ fijo por unidad</option>
+                    </select>
+                </div>
+                <div class="fg_" style="margin-bottom:0;">
+                    <label style="font-size:10px;">Valor</label>
+                    <input type="number" id="comPartesValor" min="0" step="0.01" value="3">
+                </div>
+            </div>
+        </div>
+
+        <!-- Piezas -->
+        <div style="background:var(--bg); border-radius:8px; padding:10px; margin-bottom:8px; border:1px solid var(--border);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                <span style="font-size:12px; font-weight:600; color:var(--text);">Piezas</span>
+            </div>
+            <div class="fr">
+                <div class="fg_" style="margin-bottom:0;">
+                    <label style="font-size:10px;">Tipo</label>
+                    <select id="comPiezasTipo">
+                        <option value="porcentaje">% del precio</option>
+                        <option value="fijo">$ fijo por unidad</option>
+                    </select>
+                </div>
+                <div class="fg_" style="margin-bottom:0;">
+                    <label style="font-size:10px;">Valor</label>
+                    <input type="number" id="comPiezasValor" min="0" step="0.01" value="2">
+                </div>
+            </div>
+        </div>
+
+        <!-- Insumos -->
+        <div style="background:var(--bg); border-radius:8px; padding:10px; margin-bottom:8px; border:1px solid var(--border);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                <span style="font-size:12px; font-weight:600; color:var(--text);">Insumos</span>
+            </div>
+            <div class="fr">
+                <div class="fg_" style="margin-bottom:0;">
+                    <label style="font-size:10px;">Tipo</label>
+                    <select id="comInsumosTipo">
+                        <option value="porcentaje">% del precio</option>
+                        <option value="fijo">$ fijo por unidad</option>
+                    </select>
+                </div>
+                <div class="fg_" style="margin-bottom:0;">
+                    <label style="font-size:10px;">Valor</label>
+                    <input type="number" id="comInsumosValor" min="0" step="0.01" value="1">
+                </div>
+            </div>
+        </div>
+
+        <div style="padding:8px; background:var(--bg); border-radius:8px; margin-top:8px; border:1px solid var(--border);">
+            <p style="font-size:10px; color:var(--text-dim);">
+                <i class="fas fa-info-circle"></i>
+                <strong style="color:var(--text);">Fijo:</strong> $ por unidad vendida.
+                <strong style="color:var(--text);">Porcentaje:</strong> % del precio de venta × cantidad.
+            </p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- IMPRESIÓN -->
+    <!-- ============================================================ -->
+    <div style="margin-top:20px; padding-top:16px; border-top:1px solid var(--border);">
+        <p style="font-size:10px; color:var(--text-dim); text-transform:uppercase; letter-spacing:.5px; margin-bottom:12px; font-weight:700;">
+            <i class="fas fa-print" style="color:var(--green);"></i> Impresión
+        </p>
+
+        <div class="fg_">
+            <label>Encabezado (para facturas/órdenes)</label>
+            <input type="text" id="cfgEncabezado" placeholder="D.Fabrik - Electrónica">
+        </div>
+
+        <div class="fg_">
+            <label>Pie de impresión</label>
+            <input type="text" id="cfgPie" placeholder="Gracias por su preferencia">
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- CONEXIÓN AL SERVIDOR -->
+    <!-- ============================================================ -->
+    <div style="margin-top:20px; padding-top:16px; border-top:1px solid var(--border);">
+        <p style="font-size:10px; color:var(--text-dim); text-transform:uppercase; letter-spacing:.5px; margin-bottom:12px; font-weight:700;">
+            <i class="fas fa-cloud" style="color:var(--cyan);"></i> Conexión al Servidor
+        </p>
+
+        <div class="fg_">
+            <label>URL del backend</label>
+            <input type="text" id="cfgBackendUrl" placeholder="http://127.0.0.1:8000">
+        </div>
+
+        <div class="fr">
+            <div class="fg_">
+                <label>Usuario</label>
+                <input type="text" id="cfgBackendUser" placeholder="joser" autocomplete="username">
+            </div>
+            <div class="fg_">
+                <label>Contraseña</label>
+                <input type="password" id="cfgBackendPass" placeholder="••••••••" autocomplete="current-password">
+            </div>
+        </div>
+
+        <div style="display:flex; gap:8px; margin-bottom:12px;">
+            <button type="button" id="btnConectar" class="bp" style="background:var(--cyan);">
+                <i class="fas fa-plug"></i> Conectar
+            </button>
+            <button type="button" id="btnDesconectar" class="bp" style="background:var(--red);">
+                <i class="fas fa-unlink"></i> Desconectar
+            </button>
+        </div>
+
+        <div id="estadoConexion" style="padding:10px; border-radius:8px; background:var(--bg); border:1px solid var(--border); font-size:12px; color:var(--text-dim); display:flex; align-items:center; gap:8px;">
+            <i class="fas fa-circle" style="color:var(--text-faint); font-size:8px;"></i>
+            <span>Sin conexión configurada</span>
+        </div>
+
+        <div style="margin-top:12px;">
+            <button type="button" id="btnSyncTest" class="bp" style="background:var(--purple);">
+             <i class="fas fa-sync-alt"></i> Sincronizar (subir + bajar)
+            </button>
+        </div>
+
+        <div id="syncTestResult" style="margin-top:12px; padding:12px; border-radius:8px; background:var(--bg); border:1px solid var(--border); font-size:12px; display:none;">
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- BOTÓN GUARDAR -->
+    <!-- ============================================================ -->
+    <button type="submit" class="bp" style="background:var(--blue); margin-top:20px;">
+        <i class="fas fa-save"></i> Guardar cambios
+    </button>
+</form>
+
+<div style="margin-top:12px; margin-bottom:20px;">
+    <button class="bp" style="background:var(--red);" onclick="window.restablecerConfiguracion()">
+        <i class="fas fa-undo"></i> Restablecer valores por defecto
+    </button>
+</div>

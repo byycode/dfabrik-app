@@ -1,0 +1,118 @@
+<!-- ENCABEZADO -->
+<div class="sh">
+    <div class="header-top">
+        <div class="header-left"></div>
+        <div class="logo-wrapper">
+            <img src="img/apk2.jpg" alt="D.Fabrik" class="logo-img">
+        </div>
+        <div class="header-right">
+            <span class="yp">2026</span>
+            <div class="av">A</div>
+        </div>
+    </div>
+    <div class="subtitle">SISTEMA DE CONTROL PARA TALLER DE ELECTRONICA</div>
+    <div class="header-bottom">
+        <div class="wl">
+            <p class="g">¡Bienvenido!</p>
+            <p class="u">Admin</p>
+        </div>
+    </div>
+</div>
+
+<!-- TÍTULO DE SECCIÓN -->
+<p class="ctt" style="margin-bottom:12px;font-size:11px;letter-spacing:1px">MÓDULOS PRINCIPALES</p>
+
+<!-- TARJETAS -->
+<div class="module-grid">
+
+    <!-- INVENTARIO -->
+    <div class="module-card inventory" onclick="goTo('inventario')">
+        <div class="mc-header">
+            <div class="mc-icon blue"><i class="fas fa-boxes-stacked"></i></div>
+            <div>
+                <div class="mc-title">Inventario</div>
+                <div class="mc-sub">Gestiona tus productos, componentes y equipos.</div>
+            </div>
+        </div>
+        <div class="mc-stats">
+            <div class="mc-stat">Productos <strong class="green" id="hpTotal">243</strong></div>
+            <div class="mc-stat">Bajo stock <strong class="red" id="hpLow">12</strong></div>
+        </div>
+        <button class="btn-module blue" onclick="event.stopPropagation();goTo('inventario')">VER INVENTARIO</button>
+    </div>
+
+    <!-- ÓRDENES DE SERVICIO -->
+    <div class="module-card orders" onclick="goTo('ordenes')">
+        <div class="mc-header">
+            <div class="mc-icon amber"><i class="fas fa-clipboard-list"></i></div>
+            <div>
+                <div class="mc-title">Órdenes de Servicio</div>
+                <div class="mc-sub">Crea, administra y da seguimiento a las órdenes de servicio.</div>
+            </div>
+        </div>
+        <div class="mc-stats">
+            <div class="mc-stat">Activas <strong class="blue">8</strong></div>
+            <div class="mc-stat">En proceso <strong class="amber">5</strong></div>
+        </div>
+        <button class="btn-module amber" onclick="event.stopPropagation();goTo('ordenes')">VER ÓRDENES</button>
+    </div>
+
+    <!-- FINANZAS -->
+    <div class="module-card finance" onclick="goTo('finanzas')">
+        <div class="mc-header">
+            <div class="mc-icon green"><i class="fas fa-chart-pie"></i></div>
+            <div>
+                <div class="mc-title">Finanzas</div>
+                <div class="mc-sub">Controla ingresos, gastos y la salud financiera del taller.</div>
+            </div>
+        </div>
+        <div class="mc-stats">
+            <div class="mc-stat">Ingresos (mes) <strong class="green">$12,450</strong></div>
+            <div class="mc-stat">Gastos (mes) <strong class="red">$4,230</strong></div>
+        </div>
+        <button class="btn-module green" onclick="event.stopPropagation();goTo('finanzas')">VER FINANZAS</button>
+    </div>
+
+    <!-- GARANTÍAS -->
+    <div class="module-card garantias" onclick="goTo('garantias')">
+        <div class="mc-header">
+            <div class="mc-icon pink"><i class="fas fa-shield-alt"></i></div>
+            <div>
+                <div class="mc-title">Garantías</div>
+                <div class="mc-sub">Administra las garantías de tus productos y servicios.</div>
+            </div>
+        </div>
+        <div class="mc-stats">
+            <div class="mc-stat">Activas <strong class="pink" id="gActivas">6</strong></div>
+            <div class="mc-stat">Vencidas <strong class="red" id="gVencidas">3</strong></div>
+        </div>
+        <button class="btn-module pink" onclick="event.stopPropagation();goTo('garantias')">VER GARANTÍAS</button>
+    </div>
+</div>
+
+<!-- RESUMEN GENERAL -->
+<div style="margin-top:6px">
+    <p class="ctt" style="margin-bottom:8px">Resumen General</p>
+    <div class="summary-grid">
+        <div class="summary-item green" onclick="goTo('inventario')">
+            <div class="summary-dot green"></div>
+            <div class="summary-label">Productos</div>
+            <div class="summary-value">243</div>
+        </div>
+        <div class="summary-item blue" onclick="goTo('ordenes')">
+            <div class="summary-dot blue"></div>
+            <div class="summary-label">Órdenes activas</div>
+            <div class="summary-value blue">8</div>
+        </div>
+        <div class="summary-item amber" onclick="goTo('finanzas')">
+            <div class="summary-dot amber"></div>
+            <div class="summary-label">Ingresos (mes)</div>
+            <div class="summary-value amber">12,450</div>
+        </div>
+        <div class="summary-item purple" onclick="goTo('finanzas')">
+            <div class="summary-dot purple"></div>
+            <div class="summary-label">Utilidad (mes)</div>
+            <div class="summary-value profit">8,220</div>
+        </div>
+    </div>
+</div>

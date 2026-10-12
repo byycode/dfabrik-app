@@ -1,0 +1,35 @@
+<div class="vh"><button class="bb" onclick="goTo('home')"><i class="fas fa-arrow-left"></i></button><h2>Inventario</h2></div>
+<div class="sn" id="invSN">
+    <button class="st active" data-s="productos">Productos</button>
+    <button class="st" data-s="movimientos">Movimientos</button>
+    <button class="st" data-s="analisis">Análisis</button>
+    <button class="st" data-s="salarios">Salarios</button>
+</div>
+<div class="sv active" id="sv-productos">
+    <div class="sw"><i class="fas fa-search"></i><input class="si" type="text" id="pSrch" placeholder="Buscar producto..." oninput="rP(); toggleClearBtn();"><span id="clearBtn" onclick="document.getElementById('pSrch').value=''; rP(); toggleClearBtn();"><i class="fas fa-times-circle"></i></span></div>
+    <div class="pl" id="cPills"></div>
+    <div class="ms"><div class="mb"><div class="ml">Total</div><div class="mv green" id="pT">243</div></div><div class="mb"><div class="ml">Bajo stock</div><div class="mv red" id="pL">12</div></div><div class="mb"><div class="ml">Valor costo</div><div class="mv amber" id="pCV">$0</div></div></div>
+    <div class="plist" id="pList"></div>
+</div>
+<div class="sv" id="sv-movimientos">
+    <div class="ms"><div class="mb"><div class="ml">Entradas</div><div class="mv green" id="mIn">0</div></div><div class="mb"><div class="ml">Salidas</div><div class="mv red" id="mOut">0</div></div><div class="mb"><div class="ml">Total</div><div class="mv blue" id="mTot">0</div></div></div>
+    <div class="pl" id="mPills"></div>
+    <div id="mList"></div>
+</div>
+<div class="sv" id="sv-analisis">
+    <div class="ms"><div class="mb"><div class="ml">Valor costo</div><div class="mv amber" id="aCV">$0</div></div><div class="mb"><div class="ml">Valor venta</div><div class="mv green" id="aSV">$0</div></div><div class="mb"><div class="ml">Ganancia pot.</div><div class="mv cyan" id="aPV">$0</div></div></div>
+    <p class="ctt" style="margin-bottom:10px">Margen por categoría</p>
+    <div id="mBars"></div>
+    <p class="ctt" style="margin:16px 0 10px">Top productos rentables</p>
+    <div id="tProd"></div>
+</div>
+<div class="sv" id="sv-salarios">
+    <div class="scfg"><p class="scfgt"><i class="fas fa-cog"></i> Configuración</p>
+        <div class="scr"><span class="scl">Método</span><select class="sci" id="sM" onchange="rS()" style="width:130px;appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%237c7ca8' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 8px center"><option value="percent">% del ingreso</option><option value="fixed">Precio fijo</option></select></div>
+        <div class="scr"><span class="scl">Porcentaje / Precio</span><input class="sci" type="number" id="sR" value="30" min="0" oninput="rS()"></div>
+        <div class="scr"><span class="scl">Deducciones (%)</span><input class="sci" type="number" id="sD" value="15" min="0" max="100" oninput="rS()"></div>
+    </div>
+    <div class="sres" id="sRes"></div>
+    <p class="ctt" style="margin-bottom:10px">Servicios del mes</p>
+    <div class="sl" id="sList"></div>
+</div>

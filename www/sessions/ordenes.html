@@ -1,0 +1,54 @@
+<div class="vh">
+    <button class="bb" onclick="goTo('dashboard')"><i class="fas fa-arrow-left"></i></button>
+    <h2>Órdenes de Servicio</h2>
+</div>
+
+<!-- Sub-tabs -->
+<div class="sn" id="ordSN">
+    <button class="st active" data-s="todas">Todas</button>
+    <button class="st" data-s="mias">Mis órdenes</button>
+    <button class="st" data-s="pendientes">Pendientes</button>
+    <button class="st" data-s="en_proceso">En proceso</button>
+    <button class="st" data-s="garantia">Garantía</button>
+</div>
+
+<!-- Sub-vista: Lista de órdenes -->
+<div class="sv active" id="sv-todas">
+    <!-- Buscador -->
+    <div class="sw">
+        <i class="fas fa-search"></i>
+        <input class="si" type="text" id="oSrch" placeholder="Buscar por código, cliente, equipo..." oninput="window.rO()">
+    </div>
+
+    <!-- Filtro por área -->
+    <div class="pl" id="oAreaPills"></div>
+
+    <!-- Estadísticas -->
+    <div class="ms">
+        <div class="mb">
+            <div class="ml">Total</div>
+            <div class="mv blue" id="oTotal">0</div>
+        </div>
+        <div class="mb">
+            <div class="ml">Pendientes</div>
+            <div class="mv amber" id="oPendientes">0</div>
+        </div>
+        <div class="mb">
+            <div class="ml">En proceso</div>
+            <div class="mv green" id="oEnProceso">0</div>
+        </div>
+        <div class="mb">
+            <div class="ml">Garantía</div>
+            <div class="mv cyan" id="oGarantia">0</div>
+        </div>
+    </div>
+
+    <!-- Lista -->
+    <div class="plist" id="oList"></div>
+</div>
+
+<!-- Sub-vistas placeholder (mismo contenido, solo por si acaso) -->
+<div class="sv" id="sv-mias"></div>
+<div class="sv" id="sv-pendientes"></div>
+<div class="sv" id="sv-en_proceso"></div>
+<div class="sv" id="sv-garantia"></div>

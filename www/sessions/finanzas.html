@@ -1,0 +1,76 @@
+<div class="vh">
+    <button class="bb" onclick="goTo('home')"><i class="fas fa-arrow-left"></i></button>
+    <h2>Finanzas</h2>
+</div>
+
+<!-- Tabs principales -->
+<div class="sn" id="finSN">
+    <button class="st active" data-s="resumen">Resumen general</button>
+    <button class="st" data-s="pagos">Pagos a técnicos</button>
+</div>
+
+<!-- Vista: Resumen general -->
+<div class="sv active" id="finViewResumen">
+    <div class="fs">
+        <div class="fsb income">
+            <p class="fsl">Ingreso mensual</p>
+            <p class="fsv income">$12,450</p>
+        </div>
+        <div class="fsb expense">
+            <p class="fsl">Gasto mensual</p>
+            <p class="fsv expense">$4,230</p>
+        </div>
+    </div>
+    <div class="pb">
+        <div class="plb">
+            <div class="pbi"><i class="fas fa-arrow-trend-up"></i></div>
+            <div>
+                <p class="pbl">Ganancia mensual</p>
+                <p class="pbv">$8,220</p>
+            </div>
+        </div>
+    </div>
+    <div class="cw">
+        <p class="ctt">Últimos 6 meses</p>
+        <canvas class="cc" id="fC"></canvas>
+        <div class="clg">
+            <div class="lgi"><div class="lgd inc"></div>Ingresos</div>
+            <div class="lgi"><div class="lgd exp"></div>Gastos</div>
+        </div>
+    </div>
+    <p class="ctt" style="margin-bottom:8px">Transacciones recientes</p>
+    <div class="txl" id="tList"></div>
+</div>
+
+<!-- Vista: Pagos a técnicos -->
+<div class="sv" id="finViewPagos" style="display:none;">
+
+    <!-- Filtro de fecha -->
+    <div style="display:flex; gap:8px; margin-bottom:12px; align-items:flex-end;">
+        <div style="flex:1;">
+            <label style="font-size:10px; color:var(--text-dim); text-transform:uppercase; font-weight:700; display:block; margin-bottom:4px;">Desde</label>
+            <input type="date" id="pgDesde" style="width:100%; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:8px; color:var(--text); font-size:12px;">
+        </div>
+        <div style="flex:1;">
+            <label style="font-size:10px; color:var(--text-dim); text-transform:uppercase; font-weight:700; display:block; margin-bottom:4px;">Hasta</label>
+            <input type="date" id="pgHasta" style="width:100%; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:8px; color:var(--text); font-size:12px;">
+        </div>
+        <button class="bp" style="background:var(--blue); padding:10px 16px;" onclick="window.rPG()">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+
+    <!-- Selector de técnico (solo admin/jefe) -->
+    <div id="pgSelectorContainer" style="display:none; margin-bottom:12px;">
+        <label style="font-size:10px; color:var(--text-dim); text-transform:uppercase; font-weight:700; display:block; margin-bottom:4px;">Técnico</label>
+        <select id="pgTecnicoSel" style="width:100%; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:8px; color:var(--text); font-size:12px;" onchange="window.rPGDetalle()">
+            <option value="">Todos</option>
+        </select>
+    </div>
+
+    <!-- Lista de técnicos -->
+    <div id="pgList"></div>
+
+    <!-- Detalle del técnico seleccionado -->
+    <div id="pgDetalle" style="display:none;"></div>
+</div>
